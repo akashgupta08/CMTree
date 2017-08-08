@@ -46,6 +46,7 @@ public class CMTree {
                 // creating new Self Node
                 if (keySet.contains(dNode.getNodeName())) {
                     tNodeSelf = tree.get(dNode.getNodeName());
+                    tNodeSelf.setValue(dNode.getNodeValue());
                 } else {
                     tNodeSelf = new Node();
                     tNodeSelf.setName(dNode.getNodeName());
@@ -94,7 +95,7 @@ public class CMTree {
         for (int j = 0; j < childList.size(); j++) {
             Node node = childList.get(j);
             System.out.print("       ");
-            System.out.print(node.getName());
+            System.out.print(node.getName()+"--"+node.getValue());
             childTraverse(node.getChildList());
             System.out.println("");
         }
@@ -102,7 +103,7 @@ public class CMTree {
 
     public static void traverse(Map<String, Node> map, String root) {
 
-        System.out.print(root + "-->");
+        System.out.print(root + "-->"+tree.get(root).getValue());
         Node node = map.get(root);
         if (node.getChildList() != null)
             childTraverse(node.getChildList());
